@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Balance from './components/balance/Balance';
+import Transactions from './components/transactions/Transactions';
 import './App.css';
 
 function App() {
+  const [balance, setBalance] = useState(500);
+  const [transactions, setTransactions] = useState([]);
+
+  const handleAdd = (amount) => {
+    const newBalance = balance + amount;
+    setBalance(newBalance);
+    setTransactions([...transactions, { date: new Date(), amount, type: 'added' }]);
+  };
+
+  const handleRemove = (amount) => {
+    const newBalance = balance - amount;
+    setBalance(newBalance);
+    setTransactions([...transactions, { date: new Date(), amount, type: 'removed' }]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className='title'>Expense Tracker - Basic</h1>
+      <Balance balance={balance} onAdd={handleAdd} onRemove={handleRemove} />
+      <Transactions transactions={transactions} />
     </div>
   );
 }
