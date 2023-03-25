@@ -8,7 +8,7 @@ export default function Transactions({ transactions }) {
       <ul>
         {transactions.map((transaction, index) => (
           <li key={index}>
-            {transaction.date.toLocaleString()} - Amount: ₹{transaction.amount} was {transaction.type} from the balance.
+            {transaction.date.toLocaleString()} - Amount: ₹{transaction.amount} was {transaction.type} {transaction.type === 'added' ? 'to' : 'from'} the balance.
           </li>
         ))}
       </ul>

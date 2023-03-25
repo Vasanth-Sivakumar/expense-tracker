@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Balance.css';
 
 export default function Balance({ balance, onAdd, onRemove }) {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
 
   const handleAdd = () => {
     if (amount > 0) {
