@@ -7,14 +7,14 @@ export default function Balance({ balance, onAdd, onRemove }) {
   const handleAdd = () => {
     if (amount > 0) {
       onAdd(amount);
-      setAmount(0);
+      setAmount();
     }
   };
 
   const handleRemove = () => {
     if (amount > 0 && balance >= amount) {
       onRemove(amount);
-      setAmount(0);
+      setAmount();
     }
   };
 
