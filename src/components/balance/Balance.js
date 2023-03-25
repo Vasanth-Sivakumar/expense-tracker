@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import './Balance.css';
 
 export default function Balance({ balance, onAdd, onRemove }) {
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState("");
 
   const handleAdd = () => {
     if (amount > 0) {
       onAdd(amount);
-      setAmount();
+      setAmount("");
     }
   };
 
   const handleRemove = () => {
     if (amount > 0 && balance >= amount) {
       onRemove(amount);
-      setAmount();
+      setAmount("");
     }
   };
 
